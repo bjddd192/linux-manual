@@ -1,9 +1,12 @@
 # samba
 
+samba 网络共享服务虽然速度不理想，但它是跨各种操作系统最稳定的网络共享存储方案，且部署简单，字符集也不会有任何问题。当然由于勒索病毒的出现，引发了共享安全问题，导致很多网络环境禁止使用 samba 服务，真是很遗憾，希望未来可以有更好的共享方案来作为替代。但 samba 服务本身还是非常有价值的，依然可以作为个人使用，快速实现跨系统的文件共享。
+
 ## 安装服务
 
 ```sh
 rpm -qa | grep samba
+
 yum -y install samba
 ```
 
@@ -13,8 +16,59 @@ yum -y install samba
 
 内容：
 
-```config
+```ini
+[global]
+        # 自定义smb端口，并保留445端口，默认值为 445 139
+        smb ports = 445 555
+        workgroup = SAMBA
+        server string = Samba Server
+        netbios name = Samba Server
+        display charset = UTF-8
+        unix charset = UTF-8
+        dos charset = GB2312
+        max log size = 50
+        security = user
+        map to guest = Bad User
 
+[html]
+        comment = static web
+        path = /home/docker/nginx/html
+        public = yes
+        writable = yes
+        browsable = yes
+        guest ok = yes
+        create mode = 0777
+        directory mode = 0777
+
+[axure]
+        comment = axure
+        path = /home/docker/manual_online/html/axure
+        public = yes
+        writable = yes
+        browsable = yes
+        guest ok = yes
+        create mode = 0777
+        directory mode = 0777
+
+[sfds]
+        comment = sfds
+        path = /usr/local/sfds
+        public = yes
+        writable = no
+        browsable = yes
+        guest ok = yes
+        create mode = 0744
+        directory mode = 0744
+
+[RFAPK]
+        comment = axure
+        path = /usr/local/RFAPK
+        public = yes
+        writable = yes
+        browsable = yes
+        guest ok = yes
+        create mode = 0777
+        directory mode = 0777
 ```
 
 ## 启动服务
@@ -44,6 +98,14 @@ ls /mnt/samba/axure
 
 # 取消挂载
 umount -f /mnt/samba/axure
+```
+
+### mac
+
+访达 --> 连接服务器，添加服务器，如：
+
+```sh
+smb://172.20.32.36
 ```
 
 ### windows
