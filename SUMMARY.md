@@ -4,4 +4,5 @@
     * Centos7
         * service
             * [samba](Centos7/service/samba.md)
+            * [Shadowsocks](Centos7/service/Shadowsocks.md)
 
