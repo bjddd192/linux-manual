@@ -1,0 +1,414 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Shadowsocks · 我的 linux 学习手册电子书</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Mars丶小石头 <bjddd192@163.com>">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro-kui/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-anchor-navigation-ex/style/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-tomorrow.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="samba.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../favicon.ico' type="image/x-icon">
+    
+    
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    我的 linux 学习手册
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" >
+            
+                <span>
+            
+                    
+                    Centos7
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1" >
+            
+                <span>
+            
+                    
+                    service
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1.1.1" data-path="samba.html">
+            
+                <a href="samba.html">
+            
+                    
+                    samba
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.1.1.2" data-path="Shadowsocks.html">
+            
+                <a href="Shadowsocks.html">
+            
+                    
+                    Shadowsocks
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Shadowsocks</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <div id="anchor-navigation-ex-navbar"><i class="fa fa-navicon"></i><ul><li><span class="title-icon "></span><a href="#shadowsocks"><b> </b>Shadowsocks</a></li><ul><li><span class="title-icon "></span><a href="#&#x670D;&#x52A1;&#x7AEF;"><b>1. </b>&#x670D;&#x52A1;&#x7AEF;</a></li><li><span class="title-icon "></span><a href="#&#x5BA2;&#x6237;&#x7AEF;"><b>2. </b>&#x5BA2;&#x6237;&#x7AEF;</a></li><li><span class="title-icon "></span><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;"><b>3. </b>&#x53C2;&#x8003;&#x8D44;&#x6599;</a></li></ul></ul></div><a href="#shadowsocks" id="anchorNavigationExGoTop"><i class="fa fa-arrow-up"></i></a><h1 id="shadowsocks"><a name="shadowsocks" class="anchor-navigation-ex-anchor" href="#shadowsocks"><i class="fa fa-link" aria-hidden="true"></i></a> Shadowsocks</h1>
+<p>&#x79D1;&#x5B66;&#x4E0A;&#x7F51;&#x795E;&#x5668;&#x3002;</p>
+<h2 id="&#x670D;&#x52A1;&#x7AEF;"><a name="&#x670D;&#x52A1;&#x7AEF;" class="anchor-navigation-ex-anchor" href="#&#x670D;&#x52A1;&#x7AEF;"><i class="fa fa-link" aria-hidden="true"></i></a>1. &#x670D;&#x52A1;&#x7AEF;</h2>
+<p>&#x5DF2;&#x8D2D;&#x4E70;&#x56FD;&#x5916;&#x670D;&#x52A1;&#x5668;&#x642D;&#x5EFA;&#x5B8C;&#x6210;&#xFF0C;&#x8FD9;&#x91CC;&#x6682;&#x4E0D;&#x505A;&#x8BB0;&#x5F55;&#x3002;</p>
+<h2 id="&#x5BA2;&#x6237;&#x7AEF;"><a name="&#x5BA2;&#x6237;&#x7AEF;" class="anchor-navigation-ex-anchor" href="#&#x5BA2;&#x6237;&#x7AEF;"><i class="fa fa-link" aria-hidden="true"></i></a>2. &#x5BA2;&#x6237;&#x7AEF;</h2>
+<p>&#x5B89;&#x88C5; shadowsocks&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh">yum -y install epel-release
+yum -y install python-pip
+pip install shadowsocks
+<span class="hljs-comment"># &#x67E5;&#x770B;&#x5DF2;&#x5B89;&#x88C5;&#x8F6F;&#x4EF6;&#x5217;&#x8868;</span>
+pip freeze
+mkdir -p /etc/shadowsocks
+</code></pre>
+<p>&#x914D;&#x7F6E; shadowsocks&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh">tee /etc/shadowsocks/shadowsocks.json &lt;&lt;-<span class="hljs-string">&apos;EOF&apos;</span>
+{
+    <span class="hljs-string">&quot;server&quot;</span>: <span class="hljs-string">&quot;x.x.x.x&quot;</span>,
+    <span class="hljs-string">&quot;server_port&quot;</span>: 8087,
+    <span class="hljs-string">&quot;password&quot;</span>: <span class="hljs-string">&quot;dockerMan&quot;</span>,
+    <span class="hljs-string">&quot;method&quot;</span>: <span class="hljs-string">&quot;aes-256-cfb&quot;</span>,
+    <span class="hljs-string">&quot;local_address&quot;</span>: <span class="hljs-string">&quot;127.0.0.1&quot;</span>,
+    <span class="hljs-string">&quot;local_port&quot;</span>: 1080,
+    <span class="hljs-string">&quot;timeout&quot;</span>: 300,
+    <span class="hljs-string">&quot;fast_open&quot;</span>: <span class="hljs-literal">false</span>,
+    <span class="hljs-string">&quot;workers&quot;</span>: 1
+}
+EOF
+</code></pre>
+<p>&#x914D;&#x7F6E;&#x81EA;&#x542F;&#x52A8; shadowsocks&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh">tee /etc/systemd/system/shadowsocks.service &lt;&lt;-<span class="hljs-string">&apos;EOF&apos;</span>
+[Unit]
+Description=Shadowsocks
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/sslocal -c /etc/shadowsocks/shadowsocks.json
+[Install]
+WantedBy=multi-user.target
+EOF
+</code></pre>
+<p>&#x542F;&#x52A8; shadowsocks &#x670D;&#x52A1;&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh">systemctl <span class="hljs-built_in">enable</span> shadowsocks.service
+systemctl restart shadowsocks.service
+systemctl status shadowsocks.service
+</code></pre>
+<p>&#x9A8C;&#x8BC1;&#x5BA2;&#x6237;&#x7AEF;&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh">curl --socks5 127.0.0.1:1080 http://httpbin.org/ip
+curl http://httpbin.org/ip
+</code></pre>
+<p>&#x9A8C;&#x8BC1;&#x4EE3;&#x7406;&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh"><span class="hljs-built_in">export</span> all_proxy=http://127.0.0.1:1080
+<span class="hljs-built_in">export</span> ftp_proxy=http://127.0.0.1:1080
+<span class="hljs-built_in">export</span> http_proxy=http://127.0.0.1:1080
+<span class="hljs-built_in">export</span> https_proxy=http://127.0.0.1:1080
+<span class="hljs-built_in">export</span> no_proxy=localhost,172.17.0.0/16,192.168.0.0/16.,127.0.0.1,10.10.0.0/16
+curl -I www.google.com
+</code></pre>
+<p>&#x53D1;&#x73B0;&#x6B64;&#x65F6; http &#x8BF7;&#x6C42;&#x5E76;&#x4E0D;&#x80FD;&#x4EE3;&#x7406;&#x6210;&#x529F;&#xFF0C;&#x56E0;&#x4E3A; shadowsocks &#x662F; socks5 &#x4EE3;&#x7406;&#xFF0C;&#x9700;&#x8981;&#x518D;&#x5B89;&#x88C5;&#x4E00;&#x4E2A;&#x4EE3;&#x7406;&#x670D;&#x52A1; privoxy&#x3002;</p>
+<p><a href="http://www.privoxy.org/" target="_blank">Privoxy &#x5B98;&#x7F51;</a></p>
+<p>&#x5148;&#x53D6;&#x6D88;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh"><span class="hljs-keyword">while</span> <span class="hljs-built_in">read</span> var; <span class="hljs-keyword">do</span> <span class="hljs-built_in">unset</span> <span class="hljs-variable">$var</span>; <span class="hljs-keyword">done</span> &lt; &lt;(env | grep -i proxy | awk -F= <span class="hljs-string">&apos;{print $1}&apos;</span>)
+</code></pre>
+<p>&#x5B89;&#x88C5; privoxy&#xFF1A;</p>
+<pre class="language-"><code>export http_proxy=&quot;&quot;
+export https_proxy=&quot;&quot;
+yum -y install privoxy
+systemctl enable privoxy
+systemctl restart privoxy
+systemctl status privoxy
+</code></pre><p>&#x914D;&#x7F6E; privoxy&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh">tee /etc/privoxy/config &lt;&lt;-<span class="hljs-string">&apos;EOF&apos;</span>
+listen-address 127.0.0.1:8118  <span class="hljs-comment"># 8118 &#x662F;&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#xFF0C;&#x4E0D;&#x7528;&#x6539;</span>
+forward-socks5t / 127.0.0.1:1080 .  <span class="hljs-comment"># &#x8F6C;&#x53D1;&#x5230;&#x672C;&#x5730;&#x7AEF;&#x53E3;&#xFF0C;&#x6CE8;&#x610F;&#x6700;&#x540E;&#x6709;&#x4E2A;&#x70B9;</span>
+EOF
+</code></pre>
+<p>&#x518D;&#x6765;&#x9A8C;&#x8BC1;&#x4EE3;&#x7406;&#xFF1A;</p>
+<pre class="language-"><code class="lang-sh"><span class="hljs-built_in">export</span> all_proxy=http://127.0.0.1:8118
+<span class="hljs-built_in">export</span> ftp_proxy=http://127.0.0.1:8118
+<span class="hljs-built_in">export</span> http_proxy=http://127.0.0.1:8118
+<span class="hljs-built_in">export</span> https_proxy=http://127.0.0.1:8118
+<span class="hljs-built_in">export</span> no_proxy=localhost,172.17.0.0/16,192.168.0.0/16.,127.0.0.1,10.10.0.0/16
+curl -I www.google.com
+</code></pre>
+<p>&#x53D1;&#x73B0;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x8FDE;&#x63A5;&#x4E86;&#xFF0C;&#x54E6;&#x8036;&#x3002;</p>
+<h2 id="&#x53C2;&#x8003;&#x8D44;&#x6599;"><a name="&#x53C2;&#x8003;&#x8D44;&#x6599;" class="anchor-navigation-ex-anchor" href="#&#x53C2;&#x8003;&#x8D44;&#x6599;"><i class="fa fa-link" aria-hidden="true"></i></a>3. &#x53C2;&#x8003;&#x8D44;&#x6599;</h2>
+<p><a href="https://www.jianshu.com/p/824912d9afda" target="_blank">CentOS 7 &#x5B89;&#x88C5;&#x4F7F;&#x7528;Shadowsocks&#x5BA2;&#x6237;&#x7AEF;</a></p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9; Mars&#x4E36;&#x5C0F;&#x77F3;&#x5934; 2018 all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x4EF6;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2019-02-07 11:58:19
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="samba.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: samba">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Shadowsocks","level":"1.1.1.1.2","depth":4,"previous":{"title":"samba","level":"1.1.1.1.1","depth":4,"path":"Centos7/service/samba.md","ref":"Centos7/service/samba.md","articles":[]},"dir":"ltr"},"config":{"plugins":["highlight","-search","-sharing","fontsettings","-livereload","-lunr","search-pro-kui","-sharing-plus","-github","donate","splitter","anchor-navigation-ex","prism","-disqus","tbfed-pagefooter","favicon","-rss","expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright © Mars丶小石头 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"prism":{"css":["prismjs/themes/prism-tomorrow.css"]},"disqus":{"shortName":"http-localhost-4000-16"},"github":{"url":"https://github.com/bjddd192"},"splitter":{},"donate":{"alipay":"/images/支付宝收钱码.jpeg","alipayText":"支付宝赞赏","button":"赞赏","title":"","wechat":"/images/微信收钱码.jpeg","wechatText":"微信赞赏"},"fontsettings":{"family":"sans","size":2,"theme":"white"},"rss":{"title":"我的 linux 学习手册电子书","description":"总结和分享我在使用 linux 中积累的经验与遇到的问题","author":"Mars丶小石头 <bjddd192@163.com>","feed_url":"http://gitbook.bjddd192.com/rss","site_url":"http://gitbook.bjddd912.com/","managingEditor":"bjddd192@163.com","webMaster":"bjddd192@163.com","categories":["gitbook"]},"highlight":{},"anchor-navigation-ex":{"associatedWithSummary":false,"float":{"floatIcon":"fa fa-navicon","level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"mode":"float","multipleH1":false,"pageTop":{"level1Icon":"fa fa-hand-o-right","level2Icon":"fa fa-hand-o-right","level3Icon":"fa fa-hand-o-right","showLevelIcon":false},"printLog":false,"showGoTop":true,"showLevel":true},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico"},"search-pro-kui":{},"sharing":{"qq":false,"all":["douban","facebook","google","hatenaBookmark","instapaper","line","linkedin","messenger","pocket","qq","qzone","stumbleupon","twitter","viber","vk","weibo","whatsapp"],"douban":false,"facebook":false,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":false,"messenger":false,"line":false,"vk":false,"pocket":false,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"Mars丶小石头 <bjddd192@163.com>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"我的 linux 学习手册电子书","language":"zh-hans","gitbook":"3.2.3","description":"总结和分享我在使用 linux 中积累的经验与遇到的问题"},"file":{"path":"Centos7/service/Shadowsocks.md","mtime":"2019-02-07T03:58:19.757Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-05T03:32:03.311Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro-kui/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+
+    </body>
+</html>
+
