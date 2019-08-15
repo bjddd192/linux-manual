@@ -23,3 +23,26 @@ rpm -ivh http://mirror.centos.org/centos/7/os/x86_64/Packages/ftp-0.17-67.el7.x8
 ansible 192.190.0.91 -m shell -a "docker rmi -f \$( docker images | grep '<none>' | tr -s ' ' | cut -d ' ' -f 3)"
 ```
 
+[linux命令-寻找超过100M的文件，并将其删除](https://www.cnblogs.com/f-zhao/p/6400089.html)
+
+```sh
+find / -type f -size +100M | xargs rm -rf
+
+其中第一个/表示路径，此时表示的是根目录，也就是搜索全部的文件
+
+-type表示类型
+
+f表示是文件
+
+-size 表示大小
+
++100M：表示大于100M
+
+后面就是执行的命令。
+
+当然也可以寻找特定后缀的文件，比如：find / -name "*.mp3" |xargs rm -rf，就是寻找以mp3结尾的文件并删除。一般我们在删除之前需要确认删除的文件是否正确，所以我们一般是去掉后面的执行命令，先找出文件列表，再执行。
+
+事例：
+find /data/docker_volumn/jenkins/maven-repository/com/belle -type f -size +50M | xargs rm -rf
+```
+
