@@ -46,3 +46,11 @@ f表示是文件
 find /data/docker_volumn/jenkins/maven-repository/com/belle -type f -size +50M | xargs rm -rf
 ```
 
+centos安装ab工具给网站进行压力测试
+
+```sh
+yum install httpd-tools -y
+ab -c 3000 -n 2000000 -k http://10.234.6.89/helloworld.html 
+wrk -t48 -c1000 -d5m -T30s http://10.234.6.89/helloworld.html
+```
+
