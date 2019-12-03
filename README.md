@@ -44,6 +44,9 @@ f表示是文件
 
 事例：
 find /data/docker_volumn/jenkins/maven-repository/com/belle -type f -size +50M | xargs rm -rf
+
+# 查询服务器有被哪些机器连接
+netstat -ntu | grep 10.0.43.251:8443 | awk '{print $5}' | cut -d: -f1 | sort | uniq -c | sort -n
 ```
 
 centos安装ab工具给网站进行压力测试
