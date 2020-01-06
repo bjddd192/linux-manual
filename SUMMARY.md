@@ -5,4 +5,5 @@
         * service
             * [samba](Centos7/service/samba.md)
             * [Shadowsocks](Centos7/service/Shadowsocks.md)
+            * [nginx](Centos7/service/nginx.md)
 
