@@ -46,6 +46,7 @@
 #### 编译安装 nginx
 
 ``` sh
+yum -y install openssl openssl-devel pcre-devel gd-devel lua-devel
 cd /usr/local/games
 # 设置 nginx 版本
 export v_nginx_version=nginx-1.10.1
@@ -63,7 +64,7 @@ man man/nginx.8
 # 查看编译参数
 ./configure --help
 # 使用默认编译(指定安装目录)
-./configure --prefix=/usr/local/$v_nginx_version
+./configure --prefix=/usr/local/$v_nginx_version --with-http_ssl_module
 # 查看有哪些模块会被编译进 nginx
 cat objs/ngx_modules.c 
 # 执行编译
@@ -77,8 +78,21 @@ make install
 # ./configure: error: the HTTP rewrite module requires the PCRE library.
 # 需要先安装 pcre
 brew install pcre
+# ./configure: error: the HTTP image filter module requires the GD library.
+brew install gd
 
+./configure --prefix=/Users/yanglei/09_nginx/nginx-1.16.1 --with-openssl=../openssl-1.1.1d --with-http_ssl_module --with-http_image_filter_module=dynamic --with-http_realip_module
+make
+make install
 ```
+
+##### 参考资料
+
+[mac os x 10.13 编译安装 nginx](https://segmentfault.com/a/1190000012399626)
+
+[Nginx替换OpenSSL为LibreSSL](https://www.ctolib.com/amp/topics-85593.html)
+
+[Install gd on Mac OSX](http://macappstore.org/gd/)
 
 #### 编译安装 openresty
 
@@ -92,14 +106,16 @@ wget http://10.0.43.24:8066/nginx/stable/$v_openresty_version.tar.gz
 tar -xzf $v_openresty_version.tar.gz 
 # 进入源码目录
 cd $v_openresty_version
+# 安装 SSL 必须组件
+yum install -y openssl-devel
 # 使用默认编译(指定安装目录)
-./configure --prefix=/usr/local/$v_openresty_version
+./configure --prefix=/usr/local/$v_openresty_version --with-http_ssl_module
 # 查看有哪些模块会被编译进 nginx
-cat objs/ngx_modules.c 
+cat build/nginx-1.15.8/objs/ngx_modules.c 
 # 执行编译
 make
 # 查看编译成果物
-ls objs/
+ls build/nginx-1.15.8/objs/
 # 执行安装(第一次安装使用)
 make install
 ```
@@ -123,12 +139,39 @@ goaccess geek.zorin.pub.access.log -o ../html/report.html --real-time-html --tim
 # 测试地址：
 # http://geek.zorin.pub/report.html
 
+# mac下安装
+brew install goaccess
+cd /Users/yanglei/09_nginx/nginx-1.16.1/logs
+# mac下 goaccess:1.3 对中文支持不好，暂用英文
+LANG="en_US.UTF-8" bash -c "goaccess www.zorin.xin.access.log -o ../html/report.html --real-time-html --time-format='%H:%M:%S' --date-format='%d/%b/%Y' --log-format=COMBINED"
+
 # GoAccess v1.3 支持中文与 docker 部署，后面可以再深入研究一下 
 ```
 
 ##### 参考资料
 
 [使用GoAccess构建实时日志分析系统](https://www.cnblogs.com/longren/p/10945623.html)
+
+[GoAccess中文界面显示配置](https://blog.51cto.com/linuxg/2335007)
+
+#### 生成免费 SSL 证书
+
+```sh
+# centos7
+yum install -y certbot python2-certbot-nginx
+# certbot 生成证书时，需要读取默认nginx，需要将 sbin/nginx 加入到 PATH 里 
+# or ln -s /usr/local/openresty/nginx/sbin/nginx /usr/local/sbin/nginx
+ln -s /usr/local/openresty-1.15.8.2/nginx/sbin/nginx /usr/local/sbin/nginx
+# 生成免费https证书(三个月有效期)
+# 需要真实存在的外网域名解析，并在对应的 nginx 云服务器上执行。
+certbot --nginx --nginx-server-root=/usr/local/openresty-1.15.8.2/nginx/conf -d sfds.zorin.xin
+```
+
+##### 参考资料
+
+[Nginx 通过 certbot 为网站自动配置 SSL 证书并续期](https://www.cnblogs.com/Crazy-Liu/p/11039859.html)
+
+[使用Certbot获取免费泛域名(通配符)证书](https://www.jianshu.com/p/1eb7060c5ede)
 
 #### 常用命令
 
@@ -167,6 +210,22 @@ kill -WINCH 29537
 /sbin/nginx -v
 ```
 
+#### 正则表达式
+
+```sh
+# prcetest
+pcretest
+PCRE version 8.43 2019-02-23
+
+  re> /^\/admin\/website\/article\/(\d+)\/change\/uploads\/(\w+)\/(\w+)\.(png|jpg|gif|jpeg|b mp)$/
+data> /admin/website/article/35/change/uploads/party/5.jpg
+ 0: /admin/website/article/35/change/uploads/party/5.jpg
+ 1: 35
+ 2: party
+ 3: 5
+ 4: jpg
+```
+
 ### 优化命令
 
 ```sh
@@ -184,17 +243,88 @@ dstat -tcdrlmn --top-cpu --top-mem
 dstat -cl -C 0,1,2,3,4,5,6,7 --top-cpu
 # 针对进程查看 cpu 上下文切换状态
 pidstat -w -p 13789 1
+# 查看cpu缓存
+cat /sys/devices/system/cpu/cpu1/cache/index0/size 
+cat /sys/devices/system/cpu/cpu1/cache/index1/size
+cat /sys/devices/system/cpu/cpu1/cache/index2/size  
+cat /sys/devices/system/cpu/cpu1/cache/index3/size 
+cat /sys/devices/system/cpu/cpu1/cache/index3/shared_cpu_list
+# numa架构
+# yum -y install numactl
+numactl --hardware
+numastat
 
 # 内存优化
 
 # 磁盘 io 优化
+# bps 压测工具：FIO
+
 
 # 网络优化
+# tcp连接三次握手
+# 查看tcp进程状态
+netstat -anp | grep tcp
+# 查看内核参数
+sysctl -a | grep net.ipv4
+sysctl -a | grep net.ipv4.ip
+sysctl -a | grep net.ipv4.tcp_max
+sysctl -a | grep net.ipv4.tcp_syn
+# net.ipv4.tcp_syn_retries 主动建立连接时，发SYN的重试次数
+# net.ipv4.ip_local_port_range 建立连接时的本地端口可用范围
+# net.ipv4.tcp_syn_retries 被动建立连接时，发SYN/ACK的重试次数
+# net.ipv4.tcp_max_syn_backlog SYN_RCVD状态连接的最大个数
 
 # 内核优化
+limit -a
+sysctl -a | grep file-max
+sysctl -a | grep file-nr
+# 开启TFO(0:关闭 1:作为客户端时可用试用 2:作为服务端时可用 3:总是使用)
+sysctl -a | grep net.ipv4.tcp_fastopen
+
+# 滑动窗口
+# 丢包重传
+# 达到上限后，更新路由配置
+net.ipv4.tcp_retries1
+# 达到上限后，关闭TCP连接
+net.ipv4.tcp_retries2
+
+# TCP缓冲区
+sysctl -a | grep net.ipv4.tcp | grep mem
+
+BDP=带宽(bps)*时延(s), 吞吐量=窗口/时延
 ```
 
+### 应对攻击
 
+#### 应对SYN攻击
+
+```sh
+# 接收自网卡、但未被内核协议栈处理的报文队列长度
+net.core.netdev_max_backlog
+# SYN_RCVD状态连接的最大个数
+net.ipv4.tcp_max_syn_backlog
+# 超出处理能力，对新来的SYN直接回包RST，丢弃连接
+net.ipv4.tcp_abort_on_overflow
+# 当SYN队列满后，新的SYN不进入队列，计算出cookie再以SYN+ACK中的序列号返回客户端
+net.ipv4.tcp_syncookies
+# 系统级最大backlog队列长度
+net.core.somaxconn
+```
+
+### 网络抓包
+
+#### 抓包工具
+
+[Wireshark](https://www.wireshark.org/download.html)
+
+```sh
+# 捕获过滤器示例
+host 127.0.0.1 and port 18080
+```
+
+##### 参考资料
+
+[Wireshark使用入门](https://www.cnblogs.com/cocowool/p/wireshark_tcp_http.html)
 
 ### 学习资料
 

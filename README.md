@@ -57,3 +57,14 @@ ab -c 3000 -n 2000000 -k http://10.234.6.89/helloworld.html
 wrk -t48 -c1000 -d5m -T30s http://10.234.6.89/helloworld.html
 ```
 
+firewall 防火墙操作
+
+```sh
+# 查看放行端口
+firewall-cmd --zone=public --list-ports
+# 放行端口
+firewall-cmd --permanent --zone=public --add-port=80/tcp
+# 生效配置
+firewall-cmd --reload
+```
+
