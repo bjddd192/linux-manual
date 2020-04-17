@@ -46,7 +46,8 @@
 #### 编译安装 nginx
 
 ``` sh
-yum -y install openssl openssl-devel pcre-devel gd-devel lua-devel
+yum -y install gcc gcc-c++ autoconf automake make
+yum -y install openssl openssl-devel pcre-devel gd-devel lua-devel 
 cd /usr/local/games
 # 设置 nginx 版本
 export v_nginx_version=nginx-1.10.1
@@ -64,7 +65,7 @@ man man/nginx.8
 # 查看编译参数
 ./configure --help
 # 使用默认编译(指定安装目录)
-./configure --prefix=/usr/local/$v_nginx_version --with-http_ssl_module
+./configure --prefix=/usr/local/$v_nginx_version --with-http_ssl_module --with-http_image_filter_module=dynamic --with-http_realip_module
 # 查看有哪些模块会被编译进 nginx
 cat objs/ngx_modules.c 
 # 执行编译
