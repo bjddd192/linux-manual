@@ -295,6 +295,14 @@ sysctl -a | grep net.ipv4.tcp | grep mem
 BDP=带宽(bps)*时延(s), 吞吐量=窗口/时延
 ```
 
+### 设置自启动
+
+[NGINX Init Scripts](https://www.nginx.com/resources/wiki/start/topics/examples/initscripts/)
+
+[Nginx设置成服务并开机自动启动](https://www.cnblogs.com/zhoading/p/11049295.html)
+
+[centos 7 nginx 开机自启动](https://blog.csdn.net/gshzh00/article/details/90901121)
+
 ### 应对攻击
 
 #### 应对SYN攻击
