@@ -132,6 +132,7 @@ GoAccess 被设计成快速的并基于终端的日志分析工具。其核心�
 ```sh
 # 安装 goaccess
 yum install goaccess
+goaccess -V
 
 # 使用 goaccess
 cd /usr/local/openresty-1.15.8.2/logs
@@ -334,6 +335,50 @@ host 127.0.0.1 and port 18080
 ##### 参考资料
 
 [Wireshark使用入门](https://www.cnblogs.com/cocowool/p/wireshark_tcp_http.html)
+
+### Nginx配置文件自动管理
+
+confd项目github地址：[kelseyhightower / confd ](https://github.com/kelseyhightower/confd)
+
+[templates说明](https://github.com/kelseyhightower/confd/blob/master/docs/templates.md)
+
+#### 部署过程
+
+```sh
+# 安装etcd
+yum -y install etcd
+etcdctl --version
+systemctl start etcd && systemctl enable etcd
+# 数据目录 cd /var/lib/etcd/
+
+# 安装nginx
+
+# 安装confd
+wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64
+mv confd-0.16.0-linux-amd64 /usr/bin/confd
+chmod +x /usr/bin/confd
+confd --version
+
+# confd配置
+mkdir -p /etc/confd/{conf.d,templates}
+
+etcdctl set /st-56/subdomain 56-portal
+etcdctl set /st-56/upstream/instance1 "10.0.43.251:36080"
+etcdctl set /st-56/upstream/instance2 "10.0.43.13:36080"
+etcdctl set /st-56/upstream/instance3 "10.0.43.18:36080"
+
+# 只处理一次
+confd -onetime -backend etcd -node http://127.0.0.1:2379
+```
+
+#### 参考资料
+
+[Etcd+Confd实现Nginx配置文件自动管理](https://blog.51cto.com/lizhenliang/1910150)
+[Etcd、Confd 、Nginx 服务发现](https://www.chenshaowen.com/blog/service-discovery-etcd-confd-nginx.html)
+[Confd+etcd实现高可用自动发现](http://www.361way.com/confd-etcd/5470.html)
+[etcd+confd+nginx实现服务注册及自动发现](https://www.rootop.org/pages/4058.html)
+[Etcd+Confd实现Nginx配置文件动态更新](https://carey.akhack.com/2018/10/23/Etcd-Confd%E5%AE%9E%E7%8E%B0Nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%8A%A8%E6%80%81%E6%9B%B4%E6%96%B0/)
+[Nginx配置管理平台](https://cloud.tencent.com/developer/article/1444872)
 
 ### 学习资料
 
