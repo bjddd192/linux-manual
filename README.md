@@ -68,3 +68,16 @@ firewall-cmd --permanent --zone=public --add-port=80/tcp
 firewall-cmd --reload
 ```
 
+查看mtu值
+
+```sh
+cat /sys/class/net/eth0/mtu
+```
+
+查看是不是虚拟机
+
+```sh
+dmidecode -s system-product-name
+dmesg | grep -i virtual
+```
+
