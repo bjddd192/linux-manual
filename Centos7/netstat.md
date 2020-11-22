@@ -7,6 +7,7 @@ netstat -anto | grep 6379 | awk '{print $5}' | awk -F':' '{print $1}' | sort | u
 
 # 查看端口连接情况
 netstat -alntp | grep 21051
+netstat -alntp | grep 6379 | awk '{print $5}' | awk -F':' '{print $1}' | sort | uniq -c | sort -rn
 ```
 
 
