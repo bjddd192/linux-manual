@@ -81,3 +81,10 @@ dmidecode -s system-product-name
 dmesg | grep -i virtual
 ```
 
+实用小脚本
+
+```sh
+# 查看本机IP
+ip route get 1 | awk '{print $NF;exit}'
+```
+
