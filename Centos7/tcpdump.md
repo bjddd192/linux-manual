@@ -10,6 +10,10 @@ tcpdump -i eth0 tcp port 8443 -c 300 -t -vvv -w /tmp/tcpdump.pcap
 tcpdump -s 0 -A 'tcp dst port 8443 and (tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x504f5354)' -c 300 -vvv -w /tmp/tcpdump.pcap
 # 查看抓包文件
 tcpdump -r /tmp/tcpdump.pcap 
+
+# 根据目标地址抓包
+tcpdump -i any -nn dst host 211.156.219.132 -c 300 -t -vvv -w /tmp/tcpdump.pcap
+
 ```
 
 #### 参考资料
