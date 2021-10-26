@@ -88,3 +88,6 @@ dmesg | grep -i virtual
 ip route get 1 | awk '{print $NF;exit}'
 ```
 
+常用技巧
+
+[Linux机器之间免密登录设置](https://blog.csdn.net/u013415591/article/details/81943189)
