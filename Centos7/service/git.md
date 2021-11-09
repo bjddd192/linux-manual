@@ -1,5 +1,20 @@
 ## Git 操作记录
 
+### 配置多个ssh key
+
+```sh
+# 生成一个自定义用的 SSH-Key
+ssh-keygen -t rsa -C "yang.lei@belle.com.cn" -f ~/.ssh/id_ed25519
+# 添加私钥
+ssh-add ~/.ssh/id_ed25519
+# 查看私钥列表
+ssh-add -l
+# 清空私钥列表
+# ssh-add -D
+```
+
+[git 配置多个SSH keys](https://blog.csdn.net/wangpingtaohn/article/details/74191628)
+
 ### 批量删除 tag
 
 ```sh

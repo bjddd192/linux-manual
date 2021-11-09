@@ -14,6 +14,8 @@ tcpdump -r /tmp/tcpdump.pcap
 # 根据目标地址抓包
 tcpdump -i any -nn dst host 211.156.219.132 -c 300 -t -vvv -w /tmp/tcpdump.pcap
 
+# 顺丰请求故障排查
+tcpdump -i any -nn host 210.21.231.12 -c 5000 -t -vvv -w /tmp/tcpdump.pcap
 ```
 
 #### 参考资料

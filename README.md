@@ -91,3 +91,8 @@ ip route get 1 | awk '{print $NF;exit}'
 常用技巧
 
 [Linux机器之间免密登录设置](https://blog.csdn.net/u013415591/article/details/81943189)
+
+[解决 ssh_exchange_identification: read: Connection reset by peer问题](https://blog.csdn.net/lilygg/article/details/86187028)
+
+[使用SSH登录Linux系统的ECS实例时提示“requirement "uid >= 1000" not met by user "root"”错误](https://help.aliyun.com/knowledge_detail/41491.html)
+
