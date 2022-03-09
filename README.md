@@ -96,3 +96,9 @@ ip route get 1 | awk '{print $NF;exit}'
 
 [使用SSH登录Linux系统的ECS实例时提示“requirement "uid >= 1000" not met by user "root"”错误](https://help.aliyun.com/knowledge_detail/41491.html)
 
+ssh 10.250.15.40 -l k8sloger
+k8sloger@10.250.15.40's password: 
+# 查看异常日志
+docker logs -f --tail 20 webssh2
+# 解锁用户
+pam_tally2 --user=k8sloger --reset
