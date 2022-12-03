@@ -86,6 +86,9 @@ dmesg | grep -i virtual
 ```sh
 # 查看本机IP
 ip route get 1 | awk '{print $NF;exit}'
+
+# 正则表达式提取内网域名
+cat oms-e-api-prod.yml | egrep -i '[a-zA-Z0-9]*[a-zA-Z0-9|.|-]*.bjm6v.belle.lan' | sort
 ```
 
 常用技巧
