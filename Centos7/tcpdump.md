@@ -16,6 +16,9 @@ tcpdump -i any -nn dst host 211.156.219.132 -c 300 -t -vvv -w /tmp/tcpdump.pcap
 
 # 顺丰请求故障排查
 tcpdump -i any -nn host 210.21.231.12 -c 5000 -t -vvv -w /tmp/tcpdump.pcap
+
+# 查看哪个容器应用连了数据库
+tcpdump -i any port 3306 and host polardb-test.lesoon.lan
 ```
 
 #### 参考资料
