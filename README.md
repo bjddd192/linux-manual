@@ -105,3 +105,8 @@ k8sloger@10.250.15.40's password:
 docker logs -f --tail 20 webssh2
 # 解锁用户
 pam_tally2 --user=k8sloger --reset
+
+# 清理日志
+journalctl --vacuum-time=1days
+rm -rf /var/log/messages-*
+
