@@ -110,3 +110,12 @@ pam_tally2 --user=k8sloger --reset
 journalctl --vacuum-time=1days
 rm -rf /var/log/messages-*
 
+# ipvs策略处理
+ipvsadm -L -n
+ipvsadm -S > ipvsadm.bak
+ipvsadm -D -t  10.246.50.120:443
+ipvsadm -D -t  10.246.50.120:18980
+ipvsadm -D -t  10.246.50.120:80
+ipvsadm --clear
+ipvsadm -R < ipvsadm.bak
+# 最终还是重启电脑恢复网络
