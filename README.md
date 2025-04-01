@@ -108,6 +108,7 @@ pam_tally2 --user=k8sloger --reset
 
 # 清理日志
 journalctl --vacuum-time=1days
+find /var/log -type f -name "messages*" -mtime +7 -exec rm -rf {} \;
 rm -rf /var/log/messages-*
 
 # ipvs策略处理
